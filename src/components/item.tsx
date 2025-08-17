@@ -1,10 +1,10 @@
+import { itemStorage } from "@/storage/itemStorage";
 import { Alert, Text, View, ViewProps } from "react-native";
 import Button from "./button";
-import { itemStorage } from "@/storage/itemStorage";
 
 type ItemProps = ViewProps & {
   name: string;
-  id: number;
+  id: string;
 };
 
 export default function Item({ name, id }: ItemProps) {
@@ -21,7 +21,10 @@ export default function Item({ name, id }: ItemProps) {
         }
       ]);
     } catch (error) {
-      Alert.alert("Erro de Exclusão", "Não foi possivel excluir o Participante");
+      Alert.alert(
+        "Erro de Exclusão",
+        "Não foi possivel excluir o Participante"
+      );
     }
   }
   return (

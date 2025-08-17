@@ -1,6 +1,6 @@
-import { Alert, FlatList, Text } from "react-native";
-import { useEffect, useState } from "react";
 import { ItemsStorageProps, itemStorage } from "@/storage/itemStorage";
+import { useEffect, useState } from "react";
+import { Alert, FlatList, Text } from "react-native";
 import Item from "./item";
 
 export default function List() {
@@ -20,19 +20,22 @@ export default function List() {
       Alert.alert("Erro", "Não foi possivel listar os participantes");
     }
   }
+
   useEffect(() => {
     getItem();
   }, [names]);
 
-  function handleRemove(id: number) {
-
-  }
-
   return (
     <FlatList
       data={names}
-      renderItem={({ item }) => (item ? <Item name={item.name} id={item.id}/> : null)}
-      ListEmptyComponent={<Text className="color-white-800 mt-8 text-lg text-center">Não há itens para mostrar agora</Text>}
+      renderItem={({ item }) =>
+        item ? <Item name={item.name} id={item.id} /> : null
+      }
+      ListEmptyComponent={
+        <Text className="color-white-800 mt-8 text-lg text-center">
+          Não há itens para mostrar agora
+        </Text>
+      }
     />
   );
 }
